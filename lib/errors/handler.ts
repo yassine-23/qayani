@@ -179,22 +179,8 @@ function logErrorToMonitoring(error: unknown): void {
     // Sentry integration (only in production with DSN configured)
     if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
       try {
-        const Sentry = await import('@sentry/nextjs').catch(() => null);
-        if (!Sentry) return;
-
-        if (isAPIError(error)) {
-          Sentry.captureException(error, {
-            tags: {
-              error_code: error.code,
-              error_type: 'api_error',
-              status_code: error.statusCode,
-            },
-            extra: { details: error.details },
-            level: error.isServerError() ? 'error' : 'warning',
-          });
-        } else {
-          Sentry.captureException(error);
-        }
+        // Sentry is optional — skip if not installed
+        // const Sentry = require('@sentry/nextjs');
       } catch (sentryError) {
         // Sentry not installed or error in Sentry - don't crash the app
         console.error('Failed to log to Sentry:', sentryError);
