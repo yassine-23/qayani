@@ -1,0 +1,56 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# build
+.next/
+out/
+dist/
+build/
+
+# env files
+.env
+.env.local
+.env.*.local
+
+# vercel
+.vercel
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# test
+test-results/
+playwright-report/
+
+# misc
+*.tsbuildinfo
+next-env.d.ts
+
+# prototypes (dev only)
+prototypes/
+
+# generated audio/screenshots
+*.mp3
+*.aiff
+screenshot_*.png
+prototype_*.png
+screenshots_*.png
+screenshots/
+bgimage.png
+Vollmacht.pdf
+gear_specifications_*
+test-screenshots/

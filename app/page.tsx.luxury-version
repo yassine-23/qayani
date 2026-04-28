@@ -1,0 +1,216 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
+
+export default function Home() {
+  const [quoteIndex, setQuoteIndex] = useState(0);
+
+  const quotes = [
+    "Your wisdom deserves to live forever",
+    "Love transcends the boundaries of time",
+    "Give your family the eternal gift of your voice"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setQuoteIndex((prev) => (prev + 1) % quotes.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <main className="min-h-screen relative">
+      {/* Background */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/bgimage.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/95"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          {/* Logo */}
+          <div className="flex flex-col items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="w-20 h-20 rounded-2xl overflow-hidden bg-white shadow-lg border border-gray-200 mb-6"
+            >
+              <Image
+                src="/qayani-logo.png"
+                alt="QAYANI Logo"
+                width={80}
+                height={80}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            <h1 className="heading-xl text-gray-900 mb-6">QAYANI</h1>
+          </div>
+
+          {/* Rotating Quote */}
+          <div className="h-20 flex items-center justify-center mb-16">
+            <motion.div
+              key={quoteIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="heading-lg text-gray-700 max-w-4xl leading-tight"
+            >
+              "{quotes[quoteIndex]}"
+            </motion.div>
+          </div>
+
+          {/* Main CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="glass-card mb-24"
+          >
+            <h2 className="heading-lg text-gray-900 mb-6">
+              The Most Precious Gift<br />You Can Give Your Family
+            </h2>
+            <p className="body-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+              Preserve your voice, wisdom, and love for eternity. Your family will always have you to guide them, celebrate with them, and comfort them.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+              <Link href="/onboarding">
+                <button className="btn btn-primary">
+                  Start Free
+                </button>
+              </Link>
+              <Link href="/eternal">
+                <button className="btn btn-secondary">Learn More</button>
+              </Link>
+            </div>
+            <p className="caption text-gray-500">
+              Join thousands of families • Free to start • 5 minutes to begin
+            </p>
+          </motion.div>
+
+          {/* Feature Cards */}
+          <div className="grid md:grid-cols-3 gap-8 mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="glass-card text-center hover:shadow-lg transition-shadow"
+            >
+              <h3 className="heading-md text-gray-900 mb-4">Daily Recording</h3>
+              <p className="body-md text-gray-600">
+                Just 5 minutes daily to preserve your thoughts, stories, and wisdom. Create a complete version of yourself for your family.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="glass-card text-center hover:shadow-lg transition-shadow"
+            >
+              <h3 className="heading-md text-gray-900 mb-4">AI Preservation</h3>
+              <p className="body-md text-gray-600">
+                Advanced AI learns your essence, speech patterns, and wisdom to create an authentic digital presence.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="glass-card text-center hover:shadow-lg transition-shadow"
+            >
+              <h3 className="heading-md text-gray-900 mb-4">Forever Connected</h3>
+              <p className="body-md text-gray-600">
+                Your family can talk with you anytime, receive guidance, and feel your love — creating bonds that transcend time.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Future Vision Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="glass-card"
+          >
+            <h2 className="heading-lg text-gray-900 text-center mb-12">
+              Imagine Your Family's Future
+            </h2>
+            <div className="grid md:grid-cols-2 gap-12 mb-12">
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="body-md text-gray-700">
+                    Your great-grandchildren hearing bedtime stories in your voice
+                  </span>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="body-md text-gray-700">
+                    Your wisdom guiding family decisions for generations
+                  </span>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="body-md text-gray-700">
+                    Never missing another birthday, graduation, or celebration
+                  </span>
+                </div>
+              </div>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="body-md text-gray-700">
+                    Comforting your children during difficult moments
+                  </span>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="body-md text-gray-700">
+                    Your life stories becoming family treasures
+                  </span>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="body-md text-gray-700">
+                    Creating a legacy of love that transcends time
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="text-center">
+              <Link href="/onboarding">
+                <button className="btn btn-primary mb-4">
+                  Start Your Legacy Today
+                </button>
+              </Link>
+              <p className="caption text-gray-500">
+                Begin your journey • Free to start • 5 minutes to get started
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </main>
+  );
+}

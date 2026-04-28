@@ -1,0 +1,7 @@
+src/
+bin/
+tsconfig.json
+node_modules/
+.DS_Store
+*.ts
+!dist/**/*.d.ts

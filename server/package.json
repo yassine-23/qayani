@@ -1,0 +1,15 @@
+{
+  "name": "qayani-realtime-server",
+  "version": "1.0.0",
+  "description": "WebSocket relay server for Qayani Live Interface",
+  "type": "module",
+  "main": "realtime-relay.js",
+  "scripts": {
+    "start": "node realtime-relay.js",
+    "dev": "node --watch realtime-relay.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2",
+    "dotenv": "^16.3.1"
+  }
+}
