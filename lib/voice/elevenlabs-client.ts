@@ -58,7 +58,8 @@ export class ElevenLabsClient {
     this.baseUrl = ELEVENLABS_API_URL;
 
     if (!this.apiKey) {
-      throw new Error('ElevenLabs API key is required');
+      console.warn('ElevenLabs API key not configured — voice features disabled');
+      this.apiKey = '';
     }
   }
 

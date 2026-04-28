@@ -22,8 +22,8 @@ export class ElevenLabsClient {
 
   constructor(apiKey?: string) {
     this.apiKey = apiKey || ELEVENLABS_API_KEY || '';
-    if (!this.apiKey) {
-      throw new Error('ElevenLabs API key is required');
+    if (!this.apiKey && typeof window === 'undefined') {
+      console.warn('ElevenLabs API key not configured — voice features disabled');
     }
   }
 
